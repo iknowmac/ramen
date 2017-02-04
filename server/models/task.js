@@ -5,14 +5,15 @@ const taskSchema = new mongoose.Schema({
   completed: {type: Boolean, required: true, default: false},
   completed_at: {type: Date},
   due: {type: Date},
-  priority: {type: String, enum: ['Low', 'Medium', 'High']},
+  priority: {
+    type: String, enum: ['None', 'Low', 'Medium', 'High'], default: 'None',
+  },
   note: {type: String},
 }, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
-  toJSON: {virtuals: true},
 });
 
 module.exports = mongoose.model('Task', taskSchema);

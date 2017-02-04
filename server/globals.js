@@ -1,3 +1,5 @@
+/* global DEBUG_MODE __approot */
+
 const path = require('path');
 const moment = require('moment');
 
@@ -12,7 +14,7 @@ module.exports.load = function globalsLoad() {
     return require(path.join(__approot, 'models', name));
   };
 
-  global.debug = function (component, message) {
+  global.debug = function(component, message) {
     if (DEBUG_MODE) {
       const datestr = moment();
       component = component.toUpperCase();
@@ -25,4 +27,4 @@ const normalize = (name) => {
   return (name[0].toUpperCase() + name.substr(1))
     .match(/([A-Z][^A-Z]*)/g).join('-')
     .replace(/[_\s-]+/g, '-').toLowerCase();
-}
+};

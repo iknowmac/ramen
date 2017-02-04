@@ -7,10 +7,10 @@ const DB_AUTH = process.env.DB_USER
   : '';
 const DB_URI = `mongodb://${DB_AUTH}${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 const configs = {
-  test: {mode: 'test', port: 3002, uri: `${DB_URI}_test`},
-  local: {mode: 'local', port: 3001, uri: `${DB_URI}_local`},
-  staging: {mode: 'staging', port: 4001, uri: `${DB_URI}_staging`},
-  production: {mode: 'production', port: 5001, uri: `${DB_URI}_production`},
+  test: {mode: 'test', port: 3001, uri: `${DB_URI}_test`},
+  local: {mode: 'local', port: 3000, uri: `${DB_URI}_local`},
+  staging: {mode: 'staging', port: 4000, uri: `${DB_URI}_staging`},
+  production: {mode: 'production', port: 5000, uri: `${DB_URI}_production`},
 };
 
 module.exports = function(mode) {

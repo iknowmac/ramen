@@ -1,3 +1,4 @@
+/* global debug */
 require('dotenv').load({path: '.env'});
 require('./globals').load();
 
@@ -34,8 +35,10 @@ const db = require('./db')(dbEnviroment);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db.uri, (err, res) => {
-  if(err) console.log(`Error connecting to database ${db.uri}` + err);
-  console.log(`Connected to database ${db.uri}`);
+  if(err) {
+    debug('mongodb', `Error connecting to database ${db.uri} ${err}`);
+  }
+  debug('mongodb', `Connected to database ${db.uri}`);
 });
 
 // view engine setup
