@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DotenvPlugin = require('webpack-dotenv-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 // App files location
 const PATHS = {
@@ -26,6 +27,7 @@ const plugins = [
     sample: path.resolve(__dirname, '../../.env.default'),
     path: path.resolve(__dirname, '../../.env'),
   }),
+  new DashboardPlugin(),
 ];
 
 const sassLoaders = [
