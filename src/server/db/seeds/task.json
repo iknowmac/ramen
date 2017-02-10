@@ -1,0 +1,30 @@
+{
+  "model": "Task",
+  "documents": [
+    {
+      "updated_at" : "2017-02-01T00:00:00.728+0000",
+      "created_at" : "2017-02-01T00:00:00.728+0000",
+      "name" : "Cook dinner",
+      "priority" : 1
+    },
+    {
+      "updated_at" : "2017-02-01T00:00:00.728+0000",
+      "created_at" : "2017-02-01T00:00:00.728+0000",
+      "name" : "Pickup laundry",
+      "priority" : 1,
+      "completed_at" : "2017-02-01T00:00:00.728+0000"
+    },
+    {
+      "updated_at" : "2017-02-01T00:00:00.728+0000",
+      "created_at" : "2017-02-01T00:00:00.728+0000",
+      "name" : "Clean gutters",
+      "priority" : 3
+    },
+    {
+      "updated_at" : "2017-02-01T00:00:00.728+0000",
+      "created_at" : "2017-02-01T00:00:00.728+0000",
+      "name" : "Grocery shop",
+      "priority" : 0
+    }
+  ]
+}

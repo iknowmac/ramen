@@ -1,0 +1,39 @@
+body {
+  background: #FFFFFF;
+  padding-top: 50px;
+}
+
+.link {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.task-menu__lower-left .container {
+  position: relative;
+}
+
+.task-menu__lower-left .background {
+  height: 48px;
+  width: 100%;
+}
+
+.task-menu__lower-left .bar {
+  box-sizing: border-box;
+  position: relative;
+  background: #3F51B5;
+  color: white;
+  height: 64px;
+  width: 100%;
+  padding: 20px;
+}
+
+.task-menu__lower-left .wrapper {
+  box-sizing: border-box;
+  position: absolute;
+  left: 16px;
+}
