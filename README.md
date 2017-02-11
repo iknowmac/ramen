@@ -44,6 +44,19 @@ $ npm start
 
 ## Development
 
+There are two ways to build and run the web app:
+
+* ***Development*** via the webpack dev server:
+  * `$ npm start`
+  * Open http://localhost:3000/ in your browser, pages 'hot reload' automatically when there are changes
+
+* ***Production*** client:
+  * `$ npm run build`
+  * Open http://localhost:8080 in your browser
+
+* ***Production*** server:
+
+
 ## Testing
 
 ## FAQ

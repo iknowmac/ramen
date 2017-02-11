@@ -1,45 +1,59 @@
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const DotenvPlugin = require('webpack-dotenv-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // App files location
 const PATHS = {
-  root: path.resolve(__dirname, '../app'),
   app: path.resolve(__dirname, '../app/js'),
   styles: path.resolve(__dirname, '../app/styles'),
-  build: path.resolve(__dirname, '../build'),
+  images: path.resolve(__dirname, '../app/images'),
+  build: path.resolve(__dirname, '../../build'),
 };
 
 const GLOBALS = {
   'process.env': {
-    'NODE_ENV': JSON.stringify('development')
+    'NODE_ENV': JSON.stringify('production')
   },
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
 };
 
 const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    filename: 'js/vendor.bundle.js'
+    filename: 'js/vendor.bundle.js',
+    minChunks: Infinity
+  }),
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false }
   }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin(GLOBALS),
   new webpack.ProvidePlugin({
     'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
   }),
-  new webpack.HotModuleReplacementPlugin(),
-  new ExtractTextPlugin('assets/styles-dev.css'),
-  new DotenvPlugin({
-    sample: path.resolve(__dirname, '../../.env.default'),
-    path: path.resolve(__dirname, '../../.env'),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
   }),
-  new DashboardPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false, 'screw_ie8': true },
+    output: { comments: false },
+    sourceMap: false
+  }),
+  new CopyWebpackPlugin([
+    { from: PATHS.images, to: 'images' }
+  ]),
+  new ExtractTextPlugin({
+    filename: 'css/app.css',
+    allChunks: true,
+  }),
 ];
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   entry: {
     app: ['babel-polyfill', path.resolve(PATHS.app, 'main')],
     vendor: ['react']
@@ -49,7 +63,6 @@ module.exports = {
     filename: 'js/[name].js',
     publicPath: '/'
   },
-  plugins: plugins,
   resolve: {
     modules: [PATHS.app, 'node_modules'],
     descriptionFiles: ['package.json'],
@@ -66,19 +79,21 @@ module.exports = {
       {
         test: /\.scss$/,
         include: PATHS.styles,
-        use: [
-          'style-loader',
-          'css-loader?sourceMap',
-          'postcss-loader',
-          'sass-loader?outputStyle=expanded',
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader?sourceMap',
+            'postcss-loader',
+            'sass-loader?outputStyle=compressed',
+          ],
+        }),
       },
       {
         test: /\.css$/,
         include: PATHS.styles,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader!postcss-loader'
+          use: ['css-loader!postcss-loader']
         })
       },
       {
@@ -91,13 +106,5 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    contentBase: PATHS.root,
-    hot: true,
-    historyApiFallback: true,
-    stats: {
-      colors: true,
-    },
-    port: 3000,
-  },
+  plugins: plugins
 };

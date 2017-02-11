@@ -15,5 +15,5 @@ seeder.connect(db.uri, (err) => {
   if(err) {
     return console.log(`Error connecting to database ${db.uri}` + err);
   }
-  seeder.start(__dirname, seeds, false);
+  return seeder.start(__dirname, seeds, false);
 });

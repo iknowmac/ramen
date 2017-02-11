@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
-import App from './components';
+import { App } from './components';
 import TasksContainer from './containers/TasksContainer';
 import NotFound from './views/NotFound';
 

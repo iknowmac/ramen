@@ -3,7 +3,9 @@
 
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
 
   "env": {
@@ -29,9 +31,10 @@
   },
 
   "rules": {
+    "import/extensions": "warn",
     "strict": ["error", "global"],
-    "no-unused-vars": ["error", { "vars": "all", "args": "all", "caughtErrors": "none" }],
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-unused-vars": ["warn", { "vars": "all", "args": "all", "caughtErrors": "none" }],
+    "no-console": 0,
     "camelcase": 0,
     "consistent-return": "error",
     "arrow-spacing": "error",
@@ -43,7 +46,7 @@
     "no-labels": "error",
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
     "func-style": "off",
-    "react/wrap-multilines": "error",
+    "react/jsx-wrap-multilines": "error",
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-boolean-value": "warn",
     "react/jsx-closing-bracket-location": "off",
@@ -59,9 +62,8 @@
     "react/no-multi-comp": "warn",
     "react/no-set-state": "off",
     "react/prefer-es6-class": "warn",
-    "react/require-extension": "warn",
     "react/self-closing-comp": "warn",
-    "react/sort-comp": "warn",
+    "react/sort-comp": "warn"
   }
 
 }
