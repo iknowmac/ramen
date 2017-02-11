@@ -23,10 +23,9 @@ const allowCrossDomain = (req, res, next) => {
     'Content-Type, Authorization, Content-Length, X-Requested-With'
   );
   if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    return next();
+    return res.sendStatus(200);
   }
+  return next();
 };
 
 // Database connection with promises
@@ -34,11 +33,11 @@ const dbEnviroment = process.env.NODE_ENV === 'test' ? 'test' : '';
 const db = require('./db')(dbEnviroment);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(db.uri, (err, res) => {
+mongoose.connect(db.uri, (err) => {
   if(err) {
     debug('mongodb', `Error connecting to database ${db.uri} ${err}`);
   }
-  debug('mongodb', `Connected to database ${db.uri}`);
+  return debug('mongodb', `Connected to database ${db.uri}`);
 });
 
 // view engine setup
@@ -83,7 +82,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

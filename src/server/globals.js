@@ -22,8 +22,7 @@ module.exports.load = function globalsLoad() {
   };
 };
 
-const normalize = (name) => {
-  return (name[0].toUpperCase() + name.substr(1))
+const normalize = (name) =>
+  (name[0].toUpperCase() + name.substr(1))
     .match(/([A-Z][^A-Z]*)/g).join('-')
     .replace(/[_\s-]+/g, '-').toLowerCase();
-};
