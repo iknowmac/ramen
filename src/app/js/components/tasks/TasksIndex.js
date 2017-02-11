@@ -12,29 +12,33 @@ export default class TasksIndex extends Component {
     super(props);
     this.state = {
       editing: false,
-      newTaskName: null,
+      taskName: null,
     };
   }
 
   componentWillMount() {
-    this.setState({ tasks: this.props.tasks });
+    this.setState({
+      tasks: this.props.tasks
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ tasks: nextProps.tasks });
+    this.setState({
+      tasks: nextProps.tasks
+    });
   }
 
   _toggleEditing() {
     this.setState({
       editing: !this.state.editing,
-      newTaskName: null,
+      taskName: null,
     });
   }
 
   _handleCreate(e) {
     if ( e.keyCode === 13 || e.type == 'click') {
       this.props.actions.createTasks({
-        name: this.state.newTaskName,
+        name: this.state.taskName,
       });
       this._toggleEditing();
     }
@@ -42,7 +46,7 @@ export default class TasksIndex extends Component {
 
   _handleCreateUpdate(e) {
     this.setState({
-      newTaskName: e.target.value
+      taskName: e.target.value
     });
   }
 

@@ -8,12 +8,11 @@
   "scripts": {
     "start": "node ./src/server/bin/www local & npm run webpack:dev",
     "webpack:dev": "webpack-dashboard -- webpack-dev-server --config ./src/config/webpack.config.dev.js --hot --inline --progress --colors",
-    "build": "npm run build:clean && npm run build:server && npm run build:webpack:dev",
+    "build": "npm run build:clean && npm run build:server && npm run build:webpack:prod",
     "build:clean": "rm -rf build && mkdir -p build && mkdir -p build/server && mkdir -p build/assets",
     "build:server": "babel src/server --out-dir build/server --copy-files",
     "build:prod": "npm run build:clean && npm run build:server && npm run build:webpack:prod",
     "build:webpack:prod": "webpack --progress --config src/config/webpack.config.prod.js",
-    "start:new": "webpack-dev-server --config ./src/config/webpack.config.dev.js --hot --inline --progress",
     "test": "mocha test --compilers js:babel-core/register --recursive",
     "seed": "node ./src/server/db/seeds"
   },
