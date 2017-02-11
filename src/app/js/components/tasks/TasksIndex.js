@@ -61,7 +61,7 @@ export default class TasksIndex extends Component {
 
   render () {
     const tasks = this._renderTasks();
-    console.log(tasks);
+
     if ( this.state.editing ) {
       return (
         <div className="mdl-grid">
