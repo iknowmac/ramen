@@ -29,7 +29,7 @@ class TasksContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks.records,
+    tasks: state.tasks.tasks,
   };
 }
 

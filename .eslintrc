@@ -9,12 +9,10 @@
   ],
 
   "env": {
-    "browser": true,
     "node": true,
-    "mocha": true,
-    "mongo": true,
     "es6": true,
-    "jquery": true
+    "mocha": true,
+    "mongo": true
   },
 
   "plugins": [
@@ -46,6 +44,7 @@
     "no-labels": "error",
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
     "func-style": "off",
+
     "react/jsx-wrap-multilines": "error",
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
     "react/jsx-boolean-value": "warn",

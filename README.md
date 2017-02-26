@@ -54,21 +54,16 @@ There are two ways to build and run the web app:
   * `$ npm run build`
   * Open http://localhost:8080 in your browser
 
-* ***Production*** server:
-
-
 ## Testing
-
-## FAQ
-
-### What's this for?
-
-### How do I deploy this?
+```
+$ npm test
+```
 
 ## TODO
 
 - [ ] Make the whole project less opinionated
 - [ ] Implement [Flow](https://flowtype.org/) for type checking
+- [ ] Add more tests
 
 ## License
 

@@ -1,20 +1,20 @@
 import * as types from '../constants';
 
 const initialState = {
-  records: [],
+  tasks: [],
   isLoading: false,
   error: null,
 };
 
 function updateTaskById(state, task_id, attrs) {
-  let {records} = state;
-  records = records.map((task) => {
+  let {tasks} = state;
+  tasks = tasks.map((task) => {
     if (task._id === task_id) {
       return {...task, ...attrs};
     }
     return task;
   });
-  return {records};
+  return {tasks};
 }
 
 export default function (state = initialState, action) {
@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
     }
     case types.FETCH_TASKS_SUCCESS:
       return {...state,
-        records: action.records,
+        tasks: action.tasks,
         isLoading: false,
         error: null,
       };
@@ -64,12 +64,12 @@ export default function (state = initialState, action) {
       };
     }
     case types.DELETE_TASKS_SUCCESS: {
-      const index = state.records.findIndex(function(record) {
+      const index = state.tasks.findIndex(function(record) {
         record._id === action.task._id;
       });
       return {...state,
-        records: [
-          ...state.records.slice(0, index).slice(index + 1),
+        tasks: [
+          ...state.tasks.slice(0, index).slice(index + 1),
         ],
         isLoading: false,
         error: null,
@@ -89,8 +89,8 @@ export default function (state = initialState, action) {
     }
     case types.CREATE_TASKS_SUCCESS:
       return {...state,
-        records: [
-          ...state.records.concat([action.task])
+        tasks: [
+          ...state.tasks.concat([action.task])
         ],
         isLoading: false,
         error: null,

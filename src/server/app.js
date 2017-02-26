@@ -1,6 +1,6 @@
 /* global debug __approot */
 require('dotenv').load({path: '.env'});
-require('./globals').load();
+require('./config/globals').load();
 
 const express = require('express');
 const path = require('path');
@@ -29,15 +29,18 @@ const allowCrossDomain = (req, res, next) => {
 };
 
 // Database connection with promises
-const dbEnviroment = process.env.NODE_ENV === 'test' ? 'test' : '';
-const db = require('./db')(dbEnviroment);
+const dbEnv = process.env.NODE_ENV === 'test' ? 'test' : '';
+const db = require('./config')(dbEnv);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(db.uri, (err) => {
   if(err) {
     debug('mongodb', `Error connecting to database ${db.uri} ${err}`);
   }
-  return debug('mongodb', `Connected to database ${db.uri}`);
+  if (process.env.NODE_ENV !== 'test') {
+    return debug('mongodb', `Connected to database ${db.uri}`);
+  }
+  return null;
 });
 
 // view engine setup
@@ -50,10 +53,11 @@ app.set('view engine', 'html');
 
 // Allow CrossDomain
 app.use(allowCrossDomain);
-
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__approot, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger('dev'));
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

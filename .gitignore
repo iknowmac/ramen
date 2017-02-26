@@ -32,10 +32,6 @@ npm-debug.log
 # dotEnv
 .env
 
-bower
-*.zip
+
 .DS_Store
-lib
-dist
-target
 build

@@ -3,7 +3,5 @@ module.exports = function(markup) {
   var jsdom = require('jsdom').jsdom;
   global.document = jsdom(markup || '');
   global.window = document.defaultView;
-  global.navigator = {
-    userAgent: 'node.js'
-  };
+  global.navigator = { userAgent: 'node.js' };
 };

@@ -6,7 +6,7 @@ const moment = require('moment');
 module.exports.load = function globalsLoad() {
   global.DEBUG_MODE = process.env.DEBUG_MODE;
 
-  global.__approot = path.resolve(__dirname);
+  global.__approot = path.resolve(__dirname, '../');
 
   global.model = function model(filename) {
     const name = normalize(filename);

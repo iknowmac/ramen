@@ -1,11 +1,11 @@
 /* global __approot */
 require('dotenv').load({path: '.env'});
-require('../../globals').load();
+require('../../config/globals').load();
 
 const path = require('path');
-const dbEnviroment = process.env.NODE_ENV === 'test' ? 'test' : '';
 const seeder = require('mongoose-seed-plus');
-const db = require('../index')(dbEnviroment);
+const dbEnv = process.env.NODE_ENV === 'test' ? 'test' : '';
+const db = require('../../config')(dbEnv);
 const seeds = [
   {path: path.join(__approot, 'models/task.js'), name: 'Task', clear: true},
 ];
