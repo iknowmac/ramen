@@ -17,7 +17,7 @@ function updateTaskById(state, task_id, attrs) {
   return {tasks};
 }
 
-export default function (state = initialState, action) {
+export default function tasks(state = initialState, action) {
   switch (action.type) {
 
     case types.FETCH_TASKS: {
