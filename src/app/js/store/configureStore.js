@@ -2,12 +2,18 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
-import { persistState } from 'redux-devtools';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 export default function configureStore(initialState) {
   const logger = createLogger({ collapsed: true });
+  const composeEnhancers =
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+
+    }) : compose;
+
   let enhancer;
   let middleware = applyMiddleware( thunkMiddleware );
 
@@ -18,16 +24,8 @@ export default function configureStore(initialState) {
       logger
     ];
     middleware = applyMiddleware(...middlewares);
-    let getDebugSessionKey = () => {
-      const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
-      return (matches && matches.length) ? matches[1] : null;
-    };
-    enhancer = compose(
+    enhancer = composeEnhancers(
       middleware,
-      window.devToolsExtension
-        ? window.devToolsExtension()
-        : require('../containers/DevTools').default.instrument(),
-      persistState(getDebugSessionKey())
     );
   } else {
     enhancer = compose(middleware);

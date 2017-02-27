@@ -7,7 +7,7 @@
 - [webpack](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
 - [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
 - [Redux](http://redux.js.org/) as an incredibly simple way of modelling your data app state, with great community support.
-- [Redux DevTools](https://github.com/gaearon/redux-devtools) as a live-editing environment for your Redux apps.
+- [Redux DevTools Extension](http://extension.remotedev.io/) as a live-editing environment for your Redux apps.
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
 - [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
 
