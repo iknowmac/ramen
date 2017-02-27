@@ -29,8 +29,8 @@
 ## Getting Started
 ### Install the app
 ```
-$ git clone https://github.com/towen/ramen.git app-name
-$ cd app-name
+$ git clone https://github.com/towen/ramen.git RaMEN
+$ cd RaMEN
 $ npm install
 ```
 ### Add the sample data
@@ -44,15 +44,15 @@ $ npm start
 
 ## Development
 
-There are two ways to build and run the web app:
-
 * ***Development*** via the webpack dev server:
   * `$ npm start`
   * Open http://localhost:3000/ in your browser, pages 'hot reload' automatically when there are changes
 
+## Production
+
 * ***Production*** client:
   * `$ npm run build`
-  * Open http://localhost:8080 in your browser
+  * Located in `./build`
 
 ## Testing
 ```

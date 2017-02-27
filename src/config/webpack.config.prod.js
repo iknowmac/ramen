@@ -31,9 +31,6 @@ const plugins = [
   }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin(GLOBALS),
-  new webpack.ProvidePlugin({
-    'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-  }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     debug: false
