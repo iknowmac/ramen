@@ -10,12 +10,15 @@ const DB_URI = `mongodb://${DB_AUTH}${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 const configs = {
   test: {mode: 'test', port: 3002, uri: `${DB_URI}_test`},
-  local: {mode: 'local', port: 3001, uri: `${DB_URI}_local`},
+  development: {mode: 'development', port: 3001, uri: `${DB_URI}_development`},
   staging: {mode: 'staging', port: 4000, uri: `${DB_URI}_staging`},
-  production: {mode: 'production', port: 5000, uri: `${DB_URI}_production`},
+  production: {mode: 'production', port: 8080, uri: `${DB_URI}_production`},
 };
 
 module.exports = function(mode) {
-  const res = configs[mode || process.argv[2] || 'local'] || configs.local;
+  const res = configs[
+    mode ||
+    process.argv[2] ||
+    'development'] || configs.development;
   return res;
 };
