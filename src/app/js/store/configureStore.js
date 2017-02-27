@@ -1,3 +1,4 @@
+/* global window */
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers';
@@ -6,13 +7,9 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 export default function configureStore(initialState) {
-  const logger = createLogger({
-    collapsed: true
-  });
+  const logger = createLogger({ collapsed: true });
   let enhancer;
-  let middleware = applyMiddleware(
-    thunkMiddleware,
-  );
+  let middleware = applyMiddleware( thunkMiddleware );
 
   if (process.env.NODE_ENV !== 'production') {
     let middlewares = [
@@ -21,7 +18,7 @@ export default function configureStore(initialState) {
       logger
     ];
     middleware = applyMiddleware(...middlewares);
-    let getDebugSessionKey = function () {
+    let getDebugSessionKey = () => {
       const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
       return (matches && matches.length) ? matches[1] : null;
     };
