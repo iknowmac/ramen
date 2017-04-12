@@ -71,6 +71,26 @@ export default class TasksIndex extends Component {
     );
   }
 
+  _renderStatus() {
+    return (
+      <li className="mdl-list__item">
+        <hr />
+        <span className="mdl-list__item-primary-content">
+          <span className="mdl-chip mdl-chip--contact">
+            <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">{this._openTasks().length}</span>
+            <span className="mdl-chip__text">Open</span>
+          </span>
+        </span>
+        <span className="mdl-list__item-secondary-action link">
+          <span className="mdl-chip mdl-chip--contact">
+            <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">{this._closedTasks().length}</span>
+            <span className="mdl-chip__text">Closed</span>
+          </span>
+        </span>
+      </li>
+    );
+  }
+
   render () {
     const tasks = this._renderTasks();
 
@@ -117,6 +137,7 @@ export default class TasksIndex extends Component {
                   </span>
                 </li>
                 {tasks}
+                {this._renderStatus()}
               </ul>
             </div>
           </div>
@@ -142,6 +163,7 @@ export default class TasksIndex extends Component {
               </div>
               <ul className="mdl-list">
                 {tasks}
+                {this._renderStatus()}
               </ul>
             </div>
           </div>
