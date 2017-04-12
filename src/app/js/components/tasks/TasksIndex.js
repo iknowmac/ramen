@@ -59,6 +59,18 @@ export default class TasksIndex extends Component {
     );
   }
 
+  _closedTasks() {
+    return this.state.tasks.filter((task) =>
+      task.completed === true
+    );
+  }
+
+  _openTasks() {
+    return this.state.tasks.filter((task) =>
+      task.completed === false
+    );
+  }
+
   render () {
     const tasks = this._renderTasks();
 
