@@ -1,13 +1,16 @@
 /* global model */
 
 const User = model('user');
+const task_fields = ['name', 'priority', 'completedAt', 'completed'];
 
 module.exports.controller = function(app) {
   app.get('/users', function(req, res) {
-    User.find({}).sort({priority: -1}).exec(function(err, users) {
-      if (err) return res.send(err);
-      return res.jsonp(users);
-    });
+    User.find({}).sort({username: 1})
+      .populate('tasks', task_fields)
+      .exec(function(err, users) {
+        if (err) return res.send(err);
+        return res.jsonp(users);
+      });
   })
 
   .post('/users', function(req, res) {
@@ -19,10 +22,12 @@ module.exports.controller = function(app) {
   })
 
   .get('/users/:id', function(req, res) {
-    User.findOne({'_id': req.params.id}).exec(function( err, user ) {
-      if (err) return res.send(err);
-      return res.jsonp(user);
-    });
+    User.findOne({'_id': req.params.id})
+      .populate('tasks', task_fields)
+      .exec(function( err, user ) {
+        if (err) return res.send(err);
+        return res.jsonp(user);
+      });
   })
 
   .put('/users/:id', function(req, res) {

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const taskSchema = new mongoose.Schema({
   name: {
@@ -20,6 +21,10 @@ const taskSchema = new mongoose.Schema({
   note: {
     type: String
   },
+  owner: {
+    type: ObjectId,
+    ref: 'User'
+  }
 }, {
   timestamps: {
     createdAt: 'createdAt',

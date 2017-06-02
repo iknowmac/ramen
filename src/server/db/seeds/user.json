@@ -2,23 +2,36 @@
   "model": "User",
   "documents": [
     {
+      "_id" : "59318d76284b19191d595aac",
       "firstName" : "Peter",
       "lastName" : "Parker",
       "username" : "spidey",
       "email" : "spidey@marvel.com",
-      "password" : "webslinger"
+      "password" : "webslinger",
+      "tasks" : [
+        "5931999deaf7551bab6791c7",
+        "5931999deaf7551bab6791c8"
+      ]
     },
     {
+      "_id" : "59318d76284b19191d595aad",
       "username" : "bigguy",
       "email" : "hulk@marvel.com",
-      "password" : "smash!"
+      "password" : "smash!",
+      "tasks" : [
+        "5931999deaf7551bab6791c6"
+      ]
     },
     {
+      "_id" : "59318d76284b19191d595aae",
       "firstName" : "Steve",
       "lastName" : "Rogers",
       "username" : "america",
       "email" : "captian@marvel.com",
-      "password" : "goodguy"
+      "password" : "goodguy",
+      "tasks" : [
+        "5931999deaf7551bab6791c9"
+      ]
     }
   ]
 }
