@@ -18,14 +18,14 @@ module.exports.controller = function(app) {
     });
   })
 
-  .get('/task/:id', function(req, res) {
+  .get('/tasks/:id', function(req, res) {
     Task.findOne({'_id': req.params.id}).exec(function( err, task ) {
       if (err) return res.send(err);
       return res.jsonp(task);
     });
   })
 
-  .put('/task/:id', function(req, res) {
+  .put('/tasks/:id', function(req, res) {
     Task.findOneAndUpdate({'_id': req.params.id},
       req.body.task, {'new': true}, function(err, task) {
         if (err) return res.send(err);
@@ -33,7 +33,7 @@ module.exports.controller = function(app) {
       });
   })
 
-  .delete('/task/:id', function(req, res) {
+  .delete('/tasks/:id', function(req, res) {
     Task.findOneAndRemove({'_id': req.params.id}, function(err, task) {
       if (err) return res.send(err);
       return res.jsonp(task);

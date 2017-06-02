@@ -7,7 +7,8 @@ const seeder = require('mongoose-seed-plus');
 const dbEnv = process.env.NODE_ENV === 'test' ? 'test' : '';
 const db = require('../../config')(dbEnv);
 const seeds = [
-  {path: path.join(__approot, 'models/task.js'), name: 'Task', clear: true},
+  { path: path.join(__approot, 'models/task.js'), name: 'Task', clear: true },
+  { path: path.join(__approot, 'models/user.js'), name: 'User', clear: true },
 ];
 
 seeder.Promise = global.Promise;

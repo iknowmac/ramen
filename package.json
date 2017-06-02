@@ -5,7 +5,7 @@
   "author": "Terry J. Owen <terry@iknowmac.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run build:clean & node ./src/server/bin/www local & npm run webpack:dev:server",
+    "start": "npm run build:clean & nodemon ./src/server/bin/www local & npm run webpack:dev:server",
     "prebuild": "npm run build:clean && npm run build:html",
     "build": "export NODE_ENV=production & NODE_ENV=production & webpack --config ./src/config/webpack.config.prod.js --progress",
     "build:clean": "node ./bin/clean-build.js createdir",
@@ -38,6 +38,7 @@
     "mongoose": "^4.8.1",
     "morgan": "^1.8.0",
     "node-sass-middleware": "^0.11.0",
+    "nodemon": "^1.11.0",
     "nunjucks": "^3.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

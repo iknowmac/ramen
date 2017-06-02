@@ -1,0 +1,24 @@
+{
+  "model": "User",
+  "documents": [
+    {
+      "firstName" : "Peter",
+      "lastName" : "Parker",
+      "username" : "spidey",
+      "email" : "spidey@marvel.com",
+      "password" : "webslinger"
+    },
+    {
+      "username" : "bigguy",
+      "email" : "hulk@marvel.com",
+      "password" : "smash!"
+    },
+    {
+      "firstName" : "Steve",
+      "lastName" : "Rogers",
+      "username" : "america",
+      "email" : "captian@marvel.com",
+      "password" : "goodguy"
+    }
+  ]
+}

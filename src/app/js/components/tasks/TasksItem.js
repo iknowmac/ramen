@@ -63,12 +63,12 @@ export default class TasksItem extends Component {
     if (task.completed) {
       this.props.actions.updateTasks({
         _id: task._id,
-        completed_at: null,
+        completedAt: null,
       });
     } else {
       this.props.actions.updateTasks({
         _id: task._id,
-        completed_at: new Date,
+        completedAt: new Date,
       });
     }
   }

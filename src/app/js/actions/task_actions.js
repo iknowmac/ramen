@@ -35,7 +35,7 @@ export function fetchTasksError(error) {
 export function updateTasks(attrs) {
   return (dispatch) => {
     dispatch(updateTasksRequest());
-    return fetch(`http://${api}/task/${attrs._id}`, {
+    return fetch(`http://${api}/tasks/${attrs._id}`, {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ task: attrs }),
@@ -67,7 +67,7 @@ export function updateTasksError(error) {
 export function deleteTasks(attrs) {
   return (dispatch) => {
     dispatch(deleteTasksRequest());
-    return fetch(`http://${api}/task/${attrs._id}`, {
+    return fetch(`http://${api}/tasks/${attrs._id}`, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
     })
